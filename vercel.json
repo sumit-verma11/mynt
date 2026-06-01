@@ -2,6 +2,18 @@
   "buildCommand": "cd client && npm install && npm run build",
   "outputDirectory": "client/dist",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/index" }
-  ]
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index"
+    }
+  ],
+  "experimentalServices": {
+    "mynt-server": {
+      "type": "web",
+      "root": "server",
+      "entrypoint": "app.js",
+      "routePrefix": "/",
+      "buildCommand": "npm install"
+    }
+  }
 }
