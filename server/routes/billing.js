@@ -7,19 +7,19 @@ router.get('/', (req, res) => res.json(getBilling()));
 
 router.put('/plan', (req, res) => {
   const plan = updatePlanType(req.body.type);
-  req.app.get('io').emit('billing:plan-update', plan);
+  req.app.get('io')?.emit('billing:plan-update', plan);
   res.json(plan);
 });
 
 router.put('/historic-data', (req, res) => {
   const plan = updateHistoricData(req.body.months);
-  req.app.get('io').emit('billing:plan-update', plan);
+  req.app.get('io')?.emit('billing:plan-update', plan);
   res.json(plan);
 });
 
 router.post('/tokens/purchase', (req, res) => {
   const balance = purchaseTokens(req.body.packId);
-  req.app.get('io').emit('billing:token-update', { balance });
+  req.app.get('io')?.emit('billing:token-update', { balance });
   res.json({ balance });
 });
 
